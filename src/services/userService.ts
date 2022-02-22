@@ -5,6 +5,8 @@ import * as userModel from '../models/UserModel';
 
 const createUser = async (data: NewUser) => {
   // const newId = allUsers.length + 1;
+  console.log('Passou pelo Service');
+  
   const newId = await userModel.saveUsers(data);
   const payload = { id: newId, username: data.username };
   const token = jwt.sign(payload, 'trybe', {

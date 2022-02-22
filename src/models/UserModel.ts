@@ -5,6 +5,7 @@ import NewUser from '../interfaces/NewUser';
 import LoginUser from '../interfaces/LoginUser';
 
 export const saveUsers = async (data: NewUser) => {
+  console.log('Passou pelo model');
   const { username, classe, level, password } = data;
   const [result] = await connection.execute<ResultSetHeader>(
     'INSERT INTO Users (username, classe, password, level) VALUES (?, ?, ?, ?)', 

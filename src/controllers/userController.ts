@@ -11,7 +11,7 @@ const createUser = async (req: Request, res: Response) => {
   
   const { error } = newUserSchema.validate(userData);
   if (error) {
-    console.log(error.details[0]);
+    // console.log(error.details[0]);
     // console.log(error.details[0].message.search('required') === -1);
     if (error.details[0].message.search('required') === -1) {
       return res.status(422).json({ message: error.details[0].message });
