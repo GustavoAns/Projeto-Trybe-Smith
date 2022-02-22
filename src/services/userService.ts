@@ -10,6 +10,21 @@ const createUser = async (data: NewUser) => {
   const token = jwt.sign(payload, 'trybe', {
     algorithm: 'HS256',
   });
+  // console.log(token);
+  return token;
+};
+
+const loginUser = async (data: NewUser) => {
+  // const newId = allUsers.length + 1;
+  const newId = await userModel.loginUser(data);
+  if (newId === -1) {
+    return newId;
+  }
+  const payload = { id: newId, username: data.username };
+  const token = jwt.sign(payload, 'trybe', {
+    algorithm: 'HS256',
+  });
+  // console.log(token);
   return token;
 };
 
@@ -17,4 +32,5 @@ const createUser = async (data: NewUser) => {
 
 export default {
   createUser,
+  loginUser,
 };
