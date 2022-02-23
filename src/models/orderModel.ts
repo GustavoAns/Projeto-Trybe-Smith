@@ -14,11 +14,11 @@ export const createOrder = async (id:number) => {
 };
 
 export const getAllProducts = async (): Promise<User[]> => {
-  const [data] = await connection.execute('SELECT username FROM Products');
+  const [data] = await connection.execute('SELECT * FROM Trybesmith.Orders');
   return data as User[];
 };
 
 export const getOrderbyId = async (): Promise<User[]> => {
-  const [data] = await connection.execute('SELECT username FROM Products');
+  const [data] = await connection.execute('SELECT * FROM Trybesmith.Orders');
   return data as User[];
 };

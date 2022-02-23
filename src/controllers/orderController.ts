@@ -13,7 +13,7 @@ const createOrder = async (req: Request, res: Response) => {
 };
 
 const getOrderbyId = async (req: Request, res: Response) => {
-  const userData = { ...req.params, ...res.locals };
+  const userData = { orderId: req.params.id, userId: res.locals.id };
 
   const newOrder = await orderService.getOrderbyId(userData);
   return res.status(201).json(newOrder);

@@ -29,6 +29,6 @@ export const loginUser = async (data: LoginUser) => {
 };
 
 export const getAllUsers = async (): Promise<User[]> => {
-  const [data] = await connection.execute('SELECT username FROM Users');
+  const [data] = await connection.execute('SELECT username FROM Trybesmith.Users');
   return data as User[];
 };

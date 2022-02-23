@@ -15,7 +15,7 @@ const createOrder = async (data: DependencesNewOrder) => {
 };
 
 const getOrderbyId = async (_data:object) => {
-  // const { products, id } = data;
+  // const { orderId, userId } = data;
   // const newOrderId:number = await orderModel.getOrderbyId(id);
   // await Promise.all(
   //   products.map(async (productId:number) => {
