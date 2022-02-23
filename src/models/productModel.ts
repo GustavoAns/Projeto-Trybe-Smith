@@ -26,3 +26,12 @@ export const addOrder = async (productId: number, newOrderId:number) => {
   );
   return true;
 };
+
+export const getOrderbyId = async (orderId:string) => {
+  const numero = Number(orderId);
+  const [data] = await connection.execute(
+    'SELECT id FROM Trybesmith.Products WHERE orderId=?',
+    [numero],
+  );
+  return data as Product[];
+};
