@@ -33,6 +33,11 @@ app.post(
   validCreateProduct.validAmount,
   productController.createProduct,
 );
+app.get(
+  '/products',
+  validToken,
+  productController.getAllProducts,
+);
 app.post(
   '/orders',
   validToken,

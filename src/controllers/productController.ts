@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import ProductReturn from '../interfaces/ProductReturn';
 import productService from '../services/productService';
+import Product from '../interfaces/Product';
 
 const createProduct = async (req: Request, res: Response) => {
   const userData = req.body;
@@ -9,6 +10,13 @@ const createProduct = async (req: Request, res: Response) => {
   return res.status(201).json(newProduct);
 };
 
+const getAllProducts = async (_req: Request, res: Response) => {
+  const allProducts: Product[] = await productService.getAllProducts();
+
+  return res.status(200).json(allProducts);
+};
+
 export default {
   createProduct,
+  getAllProducts,
 };
