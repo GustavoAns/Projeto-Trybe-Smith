@@ -1,10 +1,12 @@
 import express from 'express';
 import userController from './controllers/userController';
 import productController from './controllers/productController';
+import orderController from './controllers/orderController';
 import validCreateUser from './middlewares/validCreateUser';
 import validLoginUser from './middlewares/validLoginUser';
 import validToken from './middlewares/validToken';
 import validCreateProduct from './middlewares/validCreateProduct';
+import validCreateorder from './middlewares/validCreateorder';
 
 const app = express();
 
@@ -31,5 +33,11 @@ app.post(
   validCreateProduct.validAmount,
   productController.createProduct,
 );
+app.post(
+  '/orders',
+  validToken,
+  validCreateorder.validProducts,
+  orderController.createOrder,
+);  
 
 export default app;

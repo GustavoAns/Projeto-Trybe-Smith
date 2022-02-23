@@ -4,6 +4,7 @@ export default interface User {
   classe: string;
   level: number;
   password: string;
+  orderId?: number;
   status?: boolean;
   message?: string;
 }

@@ -15,6 +15,14 @@ export const createProduct = async (data: NewProduct) => {
 };
 
 export const getAllProducts = async (): Promise<User[]> => {
-  const [data] = await connection.execute('SELECT username FROM Products');
+  const [data] = await connection.execute('SELECT username FROM Trybesmith.Products');
   return data as User[];
+};
+
+export const addOrder = async (productId: number, newOrderId:number) => {
+  await connection.execute(
+    'UPDATE Trybesmith.Products SET orderId=? WHERE id=?',
+    [newOrderId, productId],
+  );
+  return true;
 };
