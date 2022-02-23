@@ -14,6 +14,20 @@ const createOrder = async (data: DependencesNewOrder) => {
   return payload;
 };
 
+const getOrderbyId = async (_data:object) => {
+  // const { products, id } = data;
+  // const newOrderId:number = await orderModel.getOrderbyId(id);
+  // await Promise.all(
+  //   products.map(async (productId:number) => {
+  //     await productModel.addOrder(productId, newOrderId);
+  //   }),
+  // );
+  // const payload = { order: { userId: id, products } };
+  const payload = { message: 'WIP' };
+  return payload;
+};
+
 export default {
   createOrder,
+  getOrderbyId,
 };

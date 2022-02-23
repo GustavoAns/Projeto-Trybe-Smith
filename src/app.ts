@@ -43,6 +43,11 @@ app.post(
   validToken,
   validCreateorder.validProducts,
   orderController.createOrder,
-);  
+);
+app.get(
+  '/orders/:id',
+  validToken,
+  orderController.getOrderbyId,
+); 
 
 export default app;

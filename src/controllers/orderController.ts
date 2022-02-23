@@ -12,6 +12,15 @@ const createOrder = async (req: Request, res: Response) => {
   // return res.status(201).json({ message: 'WIP' });
 };
 
+const getOrderbyId = async (req: Request, res: Response) => {
+  const userData = { ...req.params, ...res.locals };
+
+  const newOrder = await orderService.getOrderbyId(userData);
+  return res.status(201).json(newOrder);
+  // return res.status(201).json({ message: 'WIP' });
+};
+
 export default {
   createOrder,
+  getOrderbyId,
 };

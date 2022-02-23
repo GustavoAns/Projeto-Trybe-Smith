@@ -17,3 +17,8 @@ export const getAllProducts = async (): Promise<User[]> => {
   const [data] = await connection.execute('SELECT username FROM Products');
   return data as User[];
 };
+
+export const getOrderbyId = async (): Promise<User[]> => {
+  const [data] = await connection.execute('SELECT username FROM Products');
+  return data as User[];
+};
