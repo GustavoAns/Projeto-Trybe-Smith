@@ -5,10 +5,9 @@ import NewUser from '../interfaces/NewUser';
 import LoginUser from '../interfaces/LoginUser';
 
 export const saveUsers = async (data: NewUser) => {
-  console.log('Passou pelo model');
   const { username, classe, level, password } = data;
   const [result] = await connection.execute<ResultSetHeader>(
-    'INSERT INTO Users (username, classe, password, level) VALUES (?, ?, ?, ?)', 
+    'INSERT INTO Trybesmith.Users (username, classe, password, level) VALUES (?, ?, ?, ?)', 
     [username, classe, password, level],
   );
   const { insertId: id } = result;
@@ -17,15 +16,16 @@ export const saveUsers = async (data: NewUser) => {
 
 export const loginUser = async (data: LoginUser) => {
   const { username, password } = data;
-  const [result] = await connection.execute<ResultSetHeader>(
-    'SELECT * FROM Users WHERE username=? AND password=?', 
+  const [retorno] = await connection.execute(
+    'SELECT * FROM Trybesmith.Users WHERE username=? AND password=?', 
     [username, password],
   );
-  if (!result) {
+  const [row] = retorno as User[];
+
+  if (!row) {
     return -1;
   }
-  const { insertId: id } = result;
-  return { id };
+  return row.id;
 };
 
 export const getAllUsers = async (): Promise<User[]> => {

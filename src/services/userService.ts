@@ -5,20 +5,19 @@ import * as userModel from '../models/UserModel';
 
 const createUser = async (data: NewUser) => {
   // const newId = allUsers.length + 1;
-  console.log('Passou pelo Service');
   
   const newId = await userModel.saveUsers(data);
   const payload = { id: newId, username: data.username };
   const token = jwt.sign(payload, 'trybe', {
     algorithm: 'HS256',
   });
-  // console.log(token);
   return token;
 };
 
 const loginUser = async (data: NewUser) => {
   // const newId = allUsers.length + 1;
   const newId = await userModel.loginUser(data);
+  // console.log(newId);
   if (newId === -1) {
     return newId;
   }
@@ -26,7 +25,6 @@ const loginUser = async (data: NewUser) => {
   const token = jwt.sign(payload, 'trybe', {
     algorithm: 'HS256',
   });
-  // console.log(token);
   return token;
 };
 
